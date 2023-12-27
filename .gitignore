@@ -1,0 +1,5 @@
+build*
+docker-compose.yaml
+setup-environment
+downloads
+sstate-cache
