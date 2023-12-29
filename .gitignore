@@ -1,0 +1,7 @@
+build*
+sources
+downloads
+sstate-cache
+docker-compose.yaml
+setup-environment
+
