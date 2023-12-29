@@ -1,31 +1,80 @@
 # yocto - turbo
 
+This document include sinstructions how to checkout and build 
+yocto distribution for distro "turbo"
+
+Its just for training and testing porposes
+
 ## suppoprted targets
-- raspberry pi
+ 
+ * raspberrypi4-64
+ * qemux86-64
+ * qemuarm64
 
 
-## checkout sources
+## checkout relevant sources
+
+```
+git clone git@github.com:stevo01/yocto-turbo.git
+cd yocto-turbo
+
 mkdir sources
 cd sources
-git clone -b kirkstone git://git.yoctoproject.org/meta-raspberrypi
-git clone -b kirkstone git://git.yoctoproject.org/poky
-git clone -b kirkstone git://git.openembedded.org/meta-openembedded
-git clone -b kirkstone git://git.openembedded.org/meta-templates
+git clone -b thud git://git.yoctoproject.org/meta-raspberrypi
+git clone -b thud git://git.yoctoproject.org/poky
+git clone -b thud git://git.openembedded.org/meta-openembedded
+git clone -b thud git@github.com:stevo01/meta-turbo.git
+git clone -b thud git@github.com:stevo01/meta-templates.git
 cd ..
+```
 
-## create file links
+## setup build environments
+
+```
 ln -s sources/meta-turbo/scripts/setup-environment setup-environment
 ln -s sources/meta-turbo/build-oe/docker-compose.yaml docker-compose.yaml
+```
 
-## start docker
+## docker
+this step is optional but allows you to build the images in 
+tested environment.
+
+## build docker image and start docker container
+```
 docker compose build
+docker compose up -d
+```
+
+## join to docker container
+```
 docker compose exec -u $USER -w $PWD build-oe bash
+```
 
 ## create build dir
 
 ### first time
+```
 source setup-environment build.pi raspberrypi4-64
-source setup-environment build.pi.thun qemux86-64
+```
+
+### repeated time
+```
+source setup-environment build.pi
+```
+
+## build image
+```
+bitbake core-image-minimal
+```
+
+
+
+## notes
+git submodule add -b thud git://git.yoctoproject.org/poky sources/poky
+git submodule add -b thud git://git.yoctoproject.org/poky sources/poky
+git submodule add -b thud git://git.yoctoproject.org/poky sources/poky
+git submodule add -b thud git://git.yoctoproject.org/poky sources/poky
+git submodule add -b thud git://git.yoctoproject.org/poky sources/poky
 
 
 
