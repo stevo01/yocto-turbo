@@ -14,10 +14,12 @@ function handle_repo {
     echo    REPO_BRANCH=$REPO_BRANCH
 
     if [ -d "$REPO_DIR" ]; then
+        cd $REPO_DIR
         echo "update fetch $REPO_URL" 
         git fetch --all
         echo "checkout branch $REPO_BRANCH"
         git checkout $REPO_BRANCH
+        cd ..
     else
         echo "clone repo $REPO_URL branch $REPO_BRANCH"
         git clone -b $REPO_BRANCH $REPO_URL
