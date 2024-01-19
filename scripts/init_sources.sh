@@ -28,7 +28,7 @@ function handle_repo {
     return 0
 } 
 
-BRANCH="thud"
+BRANCH="kirkstone"
 YOCTO_DIR="./sources"
 
 if [ -d "$YOCTO_DIR" ]; then
@@ -44,5 +44,6 @@ handle_repo git://git.yoctoproject.org/poky              poky               $BRA
 handle_repo git://git.openembedded.org/meta-openembedded meta-openembedded  $BRANCH
 handle_repo git@github.com:stevo01/meta-turbo.git        meta-turbo         $BRANCH
 handle_repo git@github.com:stevo01/meta-templates.git    meta-templates     $BRANCH
+handle_repo git@github.com:stevo01/yocto-docker.git      yocto-docker       $BRANCH
 
 cd ..
