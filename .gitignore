@@ -4,4 +4,4 @@ downloads
 sstate-cache
 docker-compose.yaml
 setup-environment
-
+.venv
