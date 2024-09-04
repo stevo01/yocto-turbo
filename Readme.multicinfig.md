@@ -10,7 +10,7 @@ Its just for training and testing purposes
  * raspberrypi4-64
  * qemux86-64
  * qemuarm64
-
+ * turbo-arm64
 
 ## checkout relevant sources
 
@@ -31,9 +31,15 @@ ln -s sources/yocto-docker/docker-compose.yaml docker-compose.yaml
 this step is optional but allows you to build the images in 
 tested environment.
 
-### start docker container
+### build docker image and start docker container
 ```
-docker compose up
+docker compose build
+docker compose up -d
+```
+
+### build and restart docker container
+```
+docker compose down && docker compose up -d --build
 ```
 
 ### join to docker container
@@ -51,7 +57,6 @@ TARGET="raspberrypi3-64"
 TARGET="k3r5"
 TARGET="turbo-arm64"
 
-
 ### first time
 ```
 source setup-environment build.${TARGET} ${TARGET} 
@@ -67,25 +72,13 @@ source setup-environment build.${TARGET}
 bitbake turbo-image-minimal
 ```
 
-## build sdk
+## build multiconfig target
 ```
-bitbake turbo-image-minimal -c populate_sdk_ext
-bitbake turbo-image-minimal -c populate_sdk
-```
-
-### start emulator
-```
-bitbake qemu-helper-native
-sudo ./../sources/poky/scripts/runqemu-gen-tapdevs 1000 1000 4 tmp/sysroots-components/x86_64/qemu-helper-native/usr/bin
-
-runqemu qemux86-64 nographic
-runqemu qemuarm64 nographic
+bitbake multiconfig:k3r5:ti-sci-fw
 ```
 
-### stop emulator
-```
-Ctrl-A X
-```
+
+
 
 ## bookmarks
 - https://www.codeinsideout.com/blog/yocto/raspberry-pi/#raspberry-pi-layer
