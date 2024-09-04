@@ -1,0 +1,42 @@
+{
+    "cSpell.words": [
+        "bitbake",
+        "distro",
+        "nographic",
+        "qemuarm",
+        "qemux",
+        "raspberrypi",
+        "runqemu",
+        "stevo",
+        "sysroots",
+        "tapdevs",
+        "yocto"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/sources/poky/bitbake/lib",
+        "${workspaceFolder}/sources/poky/meta/lib"
+    ],
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/sources/poky/bitbake/lib",
+        "${workspaceFolder}/sources/poky/meta/lib"
+    ],
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.formatOnType": true,
+        "editor.wordBasedSuggestions": "off",
+        "files.trimTrailingWhitespace": false
+    },
+    "[shellscript]": {
+        "files.eol": "\n",
+        "files.trimTrailingWhitespace": false
+    },
+    "bitbake.commandWrapper": "docker compose exec -u 1000 -w ${workspaceFolder} build-oe /bin/bash -c",
+    "bitbake.pathToBuildFolder": "${workspaceFolder}/build.qemuarm64",
+    "bitbake.pathToEnvScript": "${workspaceFolder}/sources/poky/oe-init-build-env",
+    "bitbake.pathToBitbakeFolder": "${workspaceFolder}/sources/poky/bitbake",
+    "task.saveBeforeRun": "always",
+    "files.associations": {
+        "*.conf": "bitbake",
+        "*.inc": "bitbake"
+    },
+}
