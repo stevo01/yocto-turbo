@@ -29,6 +29,7 @@ function handle_repo {
 } 
 
 BRANCH="thud"
+BITBAKE_VERSION="1.40"
 YOCTO_DIR="./sources"
 
 if [ -d "$YOCTO_DIR" ]; then
@@ -39,10 +40,16 @@ fi
 
 cd $YOCTO_DIR
 
-handle_repo git://git.yoctoproject.org/meta-raspberrypi  meta-raspberrypi   $BRANCH
-handle_repo git://git.yoctoproject.org/poky              poky               $BRANCH
-handle_repo git://git.openembedded.org/meta-openembedded meta-openembedded  $BRANCH
-handle_repo git@github.com:stevo01/meta-turbo.git        meta-turbo         $BRANCH
-handle_repo git@github.com:stevo01/meta-templates.git    meta-templates     $BRANCH
+handle_repo git://git.yoctoproject.org/meta-raspberrypi   meta-raspberrypi   $BRANCH
+handle_repo git://git.openembedded.org/meta-openembedded  meta-openembedded  $BRANCH
+handle_repo git@github.com:stevo01/meta-turbo.git         meta-turbo         $BRANCH
+handle_repo git@github.com:stevo01/meta-templates.git     meta-templates     $BRANCH
+handle_repo git@github.com:stevo01/yocto-docker.git       yocto-docker       $BRANCH
+handle_repo git://git.yoctoproject.org/meta-arm           meta-arm           $BRANCH
+handle_repo git://git.openembedded.org/openembedded-core  openembedded-core  $BRANCH
+handle_repo git://git.openembedded.org/bitbake            bitbake            $BITBAKE_VERSION
+
 
 cd ..
+
+# sources/meta-openembedded/meta-python/recipes-devtools/python/python-pycryptodome.inc
